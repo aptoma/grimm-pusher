@@ -14,6 +14,9 @@
   },
   "scripts": {
     "ci": "eslint index.js lib && mocha lib/**.test.js",
+    "release": "release-it -n -i patch",
+    "release:minor": "release-it -n -i minor",
+    "release:major": "release-it -n -i major",
     "test": "mocha lib/**.test.js",
     "watch": "mocha --watch 'lib/**/*.test.js' --timeout 500"
   },
