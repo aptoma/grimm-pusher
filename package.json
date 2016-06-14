@@ -15,7 +15,7 @@
   "scripts": {
     "ci": "eslint index.js lib && mocha lib/**.test.js",
     "test": "mocha lib/**.test.js",
-    "watch": "mocha --watch 'lib/**/*.js' --timeout 500"
+    "watch": "mocha --watch 'lib/**/*.test.js' --timeout 500"
   },
   "dependencies": {
     "@aptoma/timer": "^1.0.1",
