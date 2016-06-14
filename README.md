@@ -22,7 +22,7 @@ const grimmService = createGrimmService(grimmUrl, grimmApiKey);
 // Add events for sending later
 grimmService.add({
     name: "SomeMetric",
-    time: "2016-06-14 14:01:23.779 +0200",
+    time: Date.now(), // Optional, will be set automatically if left out
     fields: {
         msec: 12
     },
