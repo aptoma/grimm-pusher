@@ -15,12 +15,20 @@ Include it in your code:
 ```js
 const grimm = require('@aptoma/grimm-pusher');
 
-const grimmUrl = 'http://grimm.example.com'
-const grimmApiKey = 'secret';
+const options = {
+	host: 'http://grimm.example.com',
+	apiKey: 'secret',
+	// Use process decider to control when items are actually sent
+	processDecider: grimm.processDeciders.always(),
+	onSendError: console.err
+}
 
-// Use process decider to control when items are actually sent
-const processDecider = grimm.processDeciders.never();
-const grimmService = grimm.createGrimmService(grimmUrl, grimmApiKey, processDecider);
+// Create instance
+const grimmService = grimm.createGrimmService(options);
+// OR as singleton
+// const grimmService = grimm.singleton();
+// grimmService.configure(options);
+
 
 // Add events for sending later
 grimmService.add({
@@ -33,9 +41,6 @@ grimmService.add({
         service: "my-service"
     }
 });
-
-// Send queued events
-grimmService.process();
 ```
 
 ### Process deciders
