@@ -18,7 +18,7 @@
     "release:minor": "release-it -n -i minor",
     "release:major": "release-it -n -i major",
     "test": "mocha lib/**.test.js",
-    "watch": "mocha --watch 'lib/**/*.test.js' --timeout 500"
+    "watch": "mocha --watch 'lib/**/*.test.js' --timeout 500 -G"
   },
   "dependencies": {
     "@aptoma/timer": "^1.0.1",
