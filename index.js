@@ -1,6 +1,7 @@
 'use strict';
 
 const GrimmService = require('./lib/grimm-service');
+const processDeciders = require('./lib/process-deciders');
 
 /**
  *
@@ -8,8 +9,11 @@ const GrimmService = require('./lib/grimm-service');
  *
  * @param {String} host
  * @param {String} apikey
+ * @param {Function} processDecider
  * @return {GrimmService}
  */
-module.exports = (host, apikey) => {
-	return new GrimmService(host, apikey);
+exports.createGrimmService = (host, apikey, processDecider) => {
+	return new GrimmService(host, apikey, processDecider);
 };
+
+exports.processDeciders = processDeciders;
