@@ -23,7 +23,7 @@
   "dependencies": {
     "@aptoma/timer": "^1.0.1",
     "bluebird": "^3.3.1",
-    "joi": "^8.4.2",
+    "lodash.throttle": "^4.0.1",
     "moment-timezone": "^0.5.4",
     "request-prom": "^1.0.0"
   },
