@@ -13,7 +13,7 @@ Install with npm:
 Include it in your code:
 
 ```js
-const grimm = require('@aptoma/grimm-pusher');
+const grimmPusher = require('@aptoma/grimm-pusher');
 
 const options = {
 	host: 'https://grimm.example.com',
@@ -21,16 +21,19 @@ const options = {
 	// Batch events within this number of milliseconds
 	throttleMs: 1000,
 	// Send regardless of throttling once this many events are queued
-	maxBatchSize: 100,
-	// Called when an error occurs, if nothing is registered, error will be thrown
-	onError: console.error
-}
+	maxBatchSize: 100
+};
 
 // Create instance
-const grimmService = grimm.createGrimmService(options);
+const grimmService = grimmPusher.createGrimmService(options);
 // Or as singleton
-const grimmServiceSingleton = grimm.singleton();
+const grimmServiceSingleton = grimmPusher.singleton();
 grimmServiceSingleton.configure(options);
+
+// Called when an events are successfully processed
+grimmService.on('success', console.info);
+// Called when an error occurs
+grimmService.on('error', console.error);
 
 // Add events for sending later
 grimmService.add({
@@ -53,3 +56,10 @@ grimmService.process();
 For better performance, it's recommended to batch events. The default is to send each event immediately, but you are strongly encouraged to enable batching.
 
 You can safely send several hundred events in a batch. If event volume is moderate, sending every second is a good baseline.
+
+### Logging and events
+
+`GrimmService` is an `EventEmitter`. The following events can be fired:
+
+- `success`: When `process()` succeeds, either due to no pending events, or successful delivery of all events
+- `error`: When `process()` fails, either due to missing config or bad response from the backend
