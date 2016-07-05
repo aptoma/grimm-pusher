@@ -1,7 +1,6 @@
 'use strict';
 
 const GrimmService = require('./lib/grimm-service');
-const processDeciders = require('./lib/process-deciders');
 
 let singleton;
 
@@ -19,11 +18,7 @@ exports.singleton = () => {
 /**
  * Create an instance of the GrimmService
  *
- * @param {Object} options
- * @param {String} options.host
- * @param {String} options.apikey
- * @param {Function} [options.processDecider]
- * @param {Function} [options.onSendError]
+ * @param {GrimmServiceOptions} options
  * @return {GrimmService}
  */
 exports.createGrimmService = (options) => {
@@ -31,5 +26,3 @@ exports.createGrimmService = (options) => {
 	service.configure(options);
 	return service;
 };
-
-exports.processDeciders = processDeciders;
