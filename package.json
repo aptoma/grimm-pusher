@@ -1,6 +1,6 @@
 {
   "name": "@aptoma/grimm-pusher",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Module for pushing events to Grimm",
   "license": "MIT",
   "main": "index.js",
