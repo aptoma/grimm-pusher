@@ -1,28 +1,28 @@
 'use strict';
 
-const GrimmService = require('./lib/grimm-service');
+const GrimmPusher = require('./lib/grimm-pusher');
 
 let singleton;
 
 /**
- * @return {GrimmService}
+ * @return {GrimmPusher}
  */
 exports.singleton = () => {
 	if (!singleton) {
-		singleton = new GrimmService();
+		singleton = new GrimmPusher();
 	}
 
 	return singleton;
 };
 
 /**
- * Create an instance of the GrimmService
+ * Create an instance of the GrimmPusher service
  *
- * @param {GrimmServiceOptions} options
- * @return {GrimmService}
+ * @param {GrimmPusherOptions} options
+ * @return {GrimmPusher}
  */
-exports.createGrimmService = (options) => {
-	const service = new GrimmService();
+exports.createService = (options) => {
+	const service = new GrimmPusher();
 	service.configure(options);
 	return service;
 };

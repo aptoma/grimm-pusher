@@ -25,25 +25,25 @@ const options = {
 };
 
 // Create instance
-const grimmService = grimmPusher.createGrimmService(options);
+const grimmService = grimmPusher.createService(options);
 // Or as singleton
 const grimmServiceSingleton = grimmPusher.singleton();
 grimmServiceSingleton.configure(options);
 
-// Called when an events are successfully processed
+// Fired when events are successfully processed
 grimmService.on('success', console.info);
-// Called when an error occurs
+// Fired when an error occurs
 grimmService.on('error', console.error);
 
 // Add events for sending later
 grimmService.add({
-    name: "SomeMetric",
+    name: 'SomeMetric',
     time: Date.now(), // Optional, will be set automatically if left out
     fields: {
         msec: 12
     },
     tags: {
-        service: "my-service"
+        service: 'my-service'
     }
 });
 
@@ -59,7 +59,7 @@ You can safely send several hundred events in a batch. If event volume is modera
 
 ### Logging and events
 
-`GrimmService` is an `EventEmitter`. The following events can be fired:
+`GrimmPusher` is an `EventEmitter`. The following events may fire:
 
 - `success`: When `process()` succeeds, either due to no pending events, or successful delivery of all events
 - `error`: When `process()` fails, either due to missing config or bad response from the backend
