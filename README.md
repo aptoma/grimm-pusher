@@ -17,7 +17,7 @@ const grimmPusher = require('@aptoma/grimm-pusher');
 
 const options = {
 	host: 'https://grimm.example.com',
-	apiKey: 'secret',
+	apikey: 'secret',
 	// Batch events within this number of milliseconds
 	throttleMs: 1000,
 	// Send regardless of throttling once this many events are queued
